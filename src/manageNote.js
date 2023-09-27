@@ -20,7 +20,7 @@ export function createNote() {
 
   let noteIdCounter = 1;
 
-  createNoteBtn.addEventListener('click', function () {
+  function eventHandler() {
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.name = 'note';
@@ -29,10 +29,6 @@ export function createNote() {
     const label = document.createElement('label');
     label.htmlFor = `note${noteIdCounter}`;
     label.textContent = '';
-
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Delete';
-    deleteButton.className = `deleteBtnNote${noteIdCounter}`;
 
     const noteContainer = document.createElement('li');
     noteContainer.className = `noteContainer${noteIdCounter}`;
@@ -44,23 +40,27 @@ export function createNote() {
     }
     noteContainer.appendChild(checkbox);
     noteContainer.appendChild(label);
-    // noteContainer.appendChild(deleteButton);
     todoList.appendChild(noteContainer);
     mainSection.appendChild(todoList);
 
     userInput.value = '';
     noteIdCounter += 1;
 
-    deleteNote(
-      todoList,
-      noteContainer,
-      deleteButton
-    );
+  };
+  userInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      eventHandler();
+    }
   });
+  createNoteBtn.addEventListener('click', eventHandler);
+  deleteNote(todoList);
 }
-function deleteNote(todoList, noteContainer, deleteButton) {
-
-  deleteButton.addEventListener('click', function () {
-    todoList.removeChild(noteContainer);
+function deleteNote(todoList) {
+  todoList.addEventListener('dblclick', function (e) {
+    if (e.target.tagName !== 'LI') {
+      return;
+    } else {
+      todoList.removeChild(e.target);
+    }
   });
 }
