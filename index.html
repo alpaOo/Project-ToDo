@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheets" href="/src/style.css">
-    <script src="./bundle.js"></script>
+    <script src="./bundle.js" defer></script>
     <title>Todo List</title>
   </head>
   <body>
-    <h1>Hello</h1>
+    <div class="container">
+      <h1>ToDo!</h1>
+      <nav class="navigation">
+        <input type="text" name="userInput" id="userInput"
+          placeholder="Enter what to do here">
+        <input type="button" value="Create" id="createBtn">
+      </nav>
+      <main class="mainSection">
+        <ul class="todoList">
+        </ul>
+      </main>
+    </div>
   </body>
 </html>
