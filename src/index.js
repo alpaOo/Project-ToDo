@@ -1,5 +1,7 @@
 "use strict";
 
 import "./style.css";
+import { createNote } from "./manageNote";
 
-console.log("Hello World!");
+createNote();
+
