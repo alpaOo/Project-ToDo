@@ -1,7 +1,7 @@
-"use strict";
+"use strict"
 
-import "./style.css";
-import { createNote } from "./manageNote";
+import "./style.css"
+import { createNote, deleteNote } from "./manageNote"
 
-createNote();
-
+createNote()
+deleteNote()
