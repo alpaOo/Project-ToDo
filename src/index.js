@@ -1,7 +1,8 @@
 "use strict"
 
 import "./style.css"
-import { createNote, deleteNote } from "./manageNote"
+import { createNote, deleteNote, appendItemsFromStorage } from "./manageNote"
 
 createNote()
 deleteNote()
+appendItemsFromStorage()

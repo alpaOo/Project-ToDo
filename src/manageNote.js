@@ -1,5 +1,9 @@
 "use strict"
 
+import { addToStorage } from "./populateStorage"
+import { removeFromStorage } from "./populateStorage"
+import { retrieveFromItems } from "./populateStorage"
+
 function noteConfig() {
     const userInput = document.getElementById("userInput")
     const createNoteBtn = document.getElementById("createBtn")
@@ -43,6 +47,9 @@ export function createNote() {
         todoList.appendChild(noteContainer)
         mainSection.appendChild(todoList)
 
+        addToStorage(checkbox.id, userInput.value)
+        console.log(localStorage.getItem(checkbox))
+
         userInput.value = ""
         noteIdCounter += 1
     }
@@ -64,6 +71,11 @@ export function deleteNote() {
             return
         } else {
             todoList.removeChild(e.target)
+            removeFromStorage(e.target.firstChild.id)
         }
     })
+}
+export function appendItemsFromStorage() {
+    const todoList = createNote().todoList
+    const checkbox = createNote().checkbox
 }
